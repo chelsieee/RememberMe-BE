@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Api::UsersController < ApplicationController
+  before_action :user_exists, except: [:create]
+
   def index
     render json: User.all.map { |user|
       {
