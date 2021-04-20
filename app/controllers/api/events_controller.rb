@@ -9,8 +9,8 @@ class Api::EventsController < ApplicationController
         id: events.id,
         title: events.title,
         name: events.name,
-        createAt: events.created_at,
-        createBy: events.user.username
+        createBy: events.user.username,
+        eventDate: events.eventdate
       }
     }
   end
@@ -19,7 +19,8 @@ class Api::EventsController < ApplicationController
     event = Event.create(
       title: params[:title],
       name: params[:name],
-      user_id: params[:loginUser_id]
+      user_id: params[:loginUser_id],
+      eventdate: params[:eventDate]
     )
     if event.valid?
       render json: { message: 'Successfully create an event' }, status: 200
@@ -39,6 +40,7 @@ class Api::EventsController < ApplicationController
     event.update(
       title: params[:title],
       name: params[:name],
+      eventdate: params[:eventDate]
     )
     render json: { message: 'Successfully updated event' }, status: 200
     else
