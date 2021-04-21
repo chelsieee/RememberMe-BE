@@ -6,16 +6,16 @@ class ApplicationController < ActionController::API
   end
 
   def decode_token
-    auth_token =request.headers['token']
+    auth_token = request.headers['token']
 
-      begin
-        if auth_token
+    begin
+      if auth_token
         decoded = JWT.decode auth_token, nil, false
-        end
-      rescue standardError
-        p 'handleexception'
-        nil
       end
+    rescue standardError
+      p 'handleexception'
+      nil
+    end
   end
 
   def user_exists
@@ -23,18 +23,11 @@ class ApplicationController < ActionController::API
     if decode_token
       p "----valid----"
       p valid
-      params[:loginUser_id] =valid[0]
+      params[:loginUser_id] = valid[0]
       true
     else
       render json: { message: 'Unauthorised user, please login first' }, status: :unauthorized
     end
   end
-
-
-
-
-
-
-
 
 end

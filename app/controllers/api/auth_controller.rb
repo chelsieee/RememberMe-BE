@@ -5,7 +5,7 @@ class Api::AuthController < ApplicationController
     user = User.find_by(email: params[:email], username: params[:username])
     if user&.authenticate(params[:password])
       token = encode_token(user.id)
-      render json:{
+      render json: {
         id: user.id,
         username: user.username,
         email: user.email,
