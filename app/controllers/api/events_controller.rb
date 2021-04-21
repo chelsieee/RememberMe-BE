@@ -36,24 +36,24 @@ class Api::EventsController < ApplicationController
 
   def update
     event = Event.find(params[:id])
-    if event.user_id ===params[:loginUser_id]
-    event.update(
-      title: params[:title],
-      name: params[:name],
-      eventdate: params[:eventDate]
-    )
-    render json: { message: 'Successfully updated event' }, status: 200
+    if event.user_id === params[:loginUser_id]
+      event.update(
+        title: params[:title],
+        name: params[:name],
+        eventdate: params[:eventDate]
+      )
+      render json: { message: 'Successfully updated event' }, status: 200
     else
       render json: { message: 'Unauthorised author, unable to update event' }, status: 403
     end
 
-    end
+  end
 
   def destroy
     event = Event.find(params[:id])
-    if event.user_id ===params[:loginUser_id]
+    if event.user_id === params[:loginUser_id]
       event.destroy
-    render json: { message: 'Event deleted successfully' }, status: 200
+      render json: { message: 'Event deleted successfully' }, status: 200
     else
       render json: { message: 'unable to delete event' }, status: 403
     end
