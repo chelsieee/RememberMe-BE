@@ -20,7 +20,7 @@ class Api::EventsController < ApplicationController
       title: params[:title],
       name: params[:name],
       user_id: params[:loginUser_id],
-      eventdate: params[:eventDate]
+      eventDate: params[:eventDate]
     )
     if event.valid?
       render json: { message: 'Successfully create an event' }, status: 200
@@ -40,7 +40,7 @@ class Api::EventsController < ApplicationController
       event.update(
         title: params[:title],
         name: params[:name],
-        eventdate: params[:eventDate]
+        eventDate: params[:eventDate]
       )
       render json: { message: 'Successfully updated event' }, status: 200
     else
