@@ -10,7 +10,7 @@ class ApplicationController < ActionController::API
 
     begin
       if auth_token
-        decoded = JWT.decode auth_token, nil, false
+        JWT.decode auth_token, nil, false
       end
     rescue standardError
       p 'handleexception'
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::API
 
   def user_exists
     valid = decode_token
-    if decode_token
+    if valid
       p "----valid----"
       p valid
       params[:loginUser_id] = valid[0]

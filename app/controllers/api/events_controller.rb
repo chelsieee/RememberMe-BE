@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
 class Api::EventsController < ApplicationController
-  before_action :user_exists, except: [:index]
+  before_action :user_exists
 
   def index
-    render json: Event.joins(:user).all.map { |events|
+    p params[:loginUser_id]
+    render json: Event.joins(:user).where(user_id: params[:loginUser_id]).map { |events|
       {
         id: events.id,
         title: events.title,
         name: events.name,
         createBy: events.user.username,
-        eventDate: events.eventdate
+        eventDate: events.eventDate
       }
     }
   end
