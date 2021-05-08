@@ -18,7 +18,7 @@ class Api::UsersController < ApplicationController
     if user.valid?
       render json: { message: "account #{user.username} has been created" }, status: 201
     else
-      render json: { message: 'Unable to create account' }, user: 500
+      render json: { message: 'Unable to create account' }, status: 500
     end
   end
 
@@ -27,7 +27,7 @@ class Api::UsersController < ApplicationController
     if user
       render json: { message: 'account information has been updated' }, status: 201
     else
-      render json: { message: 'Unable to update account' }, user: 500
+      render json: { message: 'Unable to update account' }, status: 500
     end
   end
 
@@ -40,13 +40,13 @@ class Api::UsersController < ApplicationController
         email: user.email
       }
     else
-      render json: { message: 'Unable to query account' }, user: 500
+      render json: { message: 'Unable to query account' }, status: 500
     end
   end
 
   def destroy
     User.find(params[:id]).destroy
-    render json: { message: 'account has been deleted' }, user: 500
+    render json: { message: 'account has been deleted' }, status: 500
   end
 
   def user_params
