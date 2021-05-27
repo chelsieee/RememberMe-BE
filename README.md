@@ -1,7 +1,8 @@
 # rememberMe
 > A full-stack application that traces back to the past and the people who spent that special moment with you
 >
->deployed on: https://rememberme-app.herokuapp.com  frontend repo: https://github.com/chelsieee/RememberMe-frontend
+>deployed on: https://rememberme-app.herokuapp.com  
+>frontend repo: https://github.com/chelsieee/RememberMe-frontend
 
 ## Table of contents
 * [General info](#general-info)
